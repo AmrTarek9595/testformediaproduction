@@ -1,106 +1,106 @@
 Promise.all([
-    fetch("./header.html").then(res => res.text()),
-    fetch("./footer.html").then(res => res.text()),
-    fetch("./sidebar.html").then(res => res.text()),
-    fetch("./search-form.html").then(res => res.text())
+    // fetch("./header.html").then(res => res.text()),
+    // fetch("./footer.html").then(res => res.text()),
+    // fetch("./sidebar.html").then(res => res.text()),
+    // fetch("./search-form.html").then(res => res.text())
   ])
   .then(([headerHTML, footerHTML, sidebarHTML, searchHTML]) => {
-    $("#header").html(headerHTML);
-    $("#footer").html(footerHTML);
-    $("#sidebar").html(sidebarHTML);
-    $("#edit-sidebar").html(sidebarHTML);
-    $("#search-form-container").html(searchHTML);
+    // $("#header").html(headerHTML);
+    // $("#footer").html(footerHTML);
+    // $("#sidebar").html(sidebarHTML);
+    // $("#edit-sidebar").html(sidebarHTML);
+    // $("#search-form-container").html(searchHTML);
   })
   .then(() => {
-    initBannerVideo();
-    initNavLink();
-    initSidebar();
-    initEditSidebar();
-    initSidebarDropdown();
-    initCounter();
-    initThemeSwitch();
-    initSearchBar();
-    initSubmitContact();
-    initSubmitNewsletter();
-    initAnimateData();
+    // initBannerVideo();
+    // initNavLink();
+    // initSidebar();
+    // initEditSidebar();
+    // initSidebarDropdown();
+    // initCounter();
+    // initThemeSwitch();
+    // initSearchBar();
+    // initSubmitContact();
+    // initSubmitNewsletter();
+    // initAnimateData();
   });
       
-// function initBannerVideo() {
-//     var player;
+function initBannerVideo() {
+    var player;
 
-//     var $tag = $('<script>', { src: "https://www.youtube.com/iframe_api" });
-//     $('script').first().before($tag);
+    var $tag = $('<script>', { src: "https://www.youtube.com/iframe_api" });
+    $('script').first().before($tag);
 
-//     window.onYouTubeIframeAPIReady = function() {
-//         player = new YT.Player('banner-video-background', {
-//             videoId: 'P68V3iH4TeE',
-//             playerVars: {
-//                 'autoplay': 1,
-//                 'controls': 0,
-//                 'mute': 1,
-//                 'loop': 1,
-//                 'playlist': 'P68V3iH4TeE',
-//                 'showinfo': 0,
-//                 'rel': 0,
-//                 'enablejsapi': 1,
-//                 'disablekb': 1,
-//                 'modestbranding': 1,
-//                 'iv_load_policy': 3,
-//                 'origin': window.location.origin
-//             },
-//             events: {
-//                 'onReady': onPlayerReady,
-//                 'onStateChange': onPlayerStateChange
-//             }
-//         });
-//     };
+    window.onYouTubeIframeAPIReady = function() {
+        player = new YT.Player('banner-video-background', {
+            videoId: 'P68V3iH4TeE',
+            playerVars: {
+                'autoplay': 1,
+                'controls': 0,
+                'mute': 1,
+                'loop': 1,
+                'playlist': 'P68V3iH4TeE',
+                'showinfo': 0,
+                'rel': 0,
+                'enablejsapi': 1,
+                'disablekb': 1,
+                'modestbranding': 1,
+                'iv_load_policy': 3,
+                'origin': window.location.origin
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    };
 
-//     function onPlayerReady(event) {
-//         event.target.playVideo();
-//         setYoutubeSize();
-//         $(window).on('resize', setYoutubeSize);
-//     }
+    function onPlayerReady(event) {
+        event.target.playVideo();
+        setYoutubeSize();
+        $(window).on('resize', setYoutubeSize);
+    }
 
-//     function onPlayerStateChange(event) {
-//         if (event.data === YT.PlayerState.ENDED) {
-//             player.playVideo();
-//         }
-//     }
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+            player.playVideo();
+        }
+    }
 
-//     function setYoutubeSize() {
-//         var $container = $('.banner-video-container');
-//         var containerWidth = $container.outerWidth();
-//         var containerHeight = $container.outerHeight();
-//         var aspectRatio = 16 / 9;
-//         var newWidth, newHeight;
+    function setYoutubeSize() {
+        var $container = $('.banner-video-container');
+        var containerWidth = $container.outerWidth();
+        var containerHeight = $container.outerHeight();
+        var aspectRatio = 16 / 9;
+        var newWidth, newHeight;
 
-//         if (containerWidth / containerHeight > aspectRatio) {
-//             newWidth = containerWidth;
-//             newHeight = containerWidth / aspectRatio;
-//         } else {
-//             newWidth = containerHeight * aspectRatio;
-//             newHeight = containerHeight;
-//         }
+        if (containerWidth / containerHeight > aspectRatio) {
+            newWidth = containerWidth;
+            newHeight = containerWidth / aspectRatio;
+        } else {
+            newWidth = containerHeight * aspectRatio;
+            newHeight = containerHeight;
+        }
 
-//         if (player && player.getIframe) {
-//             var $iframe = $(player.getIframe());
-//             $iframe.width(newWidth).height(newHeight);
-//         }
-//     }
+        if (player && player.getIframe) {
+            var $iframe = $(player.getIframe());
+            $iframe.width(newWidth).height(newHeight);
+        }
+    }
 
-//     function handleYouTubeErrors() {
-//         window.addEventListener('message', function(event) {
-//             if (event.origin !== 'https://www.youtube.com') return;
+    function handleYouTubeErrors() {
+        window.addEventListener('message', function(event) {
+            if (event.origin !== 'https://www.youtube.com') return;
         
-//             try {
-//                 var data = JSON.parse(event.data);
+            try {
+                var data = JSON.parse(event.data);
                
-//             } catch (e) {
+            } catch (e) {
      
-//             }
-//         });
-//     }
-// }
+            }
+        });
+    }
+}
 
 function initThemeSwitch() {
     let lightMode = false;
@@ -389,11 +389,11 @@ $(document).ready(function(){
             description: "Simple, Direct, and Friendly Home / FAQ Frequently Asked Questions Got Questions? We've Got Answers. What services does Marko offer? We specialize in digital marketing, including branding, social media management, content strategy, paid ads, and analytics-driven campaigns. How long does it take to see results? While some channels like paid ads offer quicker results, most […]",
             url: "faq.html"
         },
-        // {
-        //     title: "Error 404",
-        //     description: "404 Oops! Page Not Found We couldn't find the page you're looking for. It might have been removed, renamed, or never existed. Back to Home",
-        //     url: "404_page.html"
-        // },
+        {
+            title: "Error 404",
+            description: "404 Oops! Page Not Found We couldn't find the page you're looking for. It might have been removed, renamed, or never existed. Back to Home",
+            url: "404_page.html"
+        },
         {
             title: "Blog",
             description: "Our Blog Home / Blog Insights & Trends Latest Digital Marketing Strategies & Tips Explore our latest blog articles covering industry trends, expert insights, and actionable strategies to elevate your digital marketing game. View All Articles April 14, 2025 Social Media Mastering Instagram and Facebook Ads Lorem ipsum dolor si consectetur adipiscing elit ut elit […]",
